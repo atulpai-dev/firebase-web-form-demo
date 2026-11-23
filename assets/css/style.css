@@ -1,36 +1,30 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f6fb;
+    background-color: #00aaff;
 }
 
 .container {
-    width: min(100% - 32px, 360px);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
 }
 
-.card {
-    padding: 32px;
-    border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 8px 28px rgba(31, 51, 73, 0.12);
+.logo img {
+    width: 50px;
+    margin-bottom: 20px;
 }
 
-h1 {
-    margin: 0 0 8px;
+h2 {
+    margin-bottom: 20px;
     font-size: 24px;
-}
-
-.intro {
-    margin: 0 0 24px;
-    color: #536273;
 }
 
 form {
@@ -46,61 +40,45 @@ label {
 
 input {
     padding: 10px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font: inherit;
 }
 
 button {
     padding: 10px;
-    background-color: #1769aa;
+    background-color: #ff0000;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font: inherit;
 }
 
 button:hover {
-    background-color: #105687;
+    background-color: #e60000;
 }
 
-button:disabled {
-    cursor: wait;
-    opacity: 0.7;
+.small-text {
+    font-size: 10px;
+    margin-top: 10px;
 }
 
-.switch-mode {
-    margin: 20px 0 0;
+p {
+    margin: 5px 0;
 }
 
-.link-button {
-    padding: 0;
-    background: none;
-    color: #1769aa;
-    text-decoration: underline;
+a {
+    color: #ff0000;
+    text-decoration: none;
 }
 
-.link-button:hover {
-    background: none;
-    color: #105687;
-}
+.alert{
+    width: 100%;
+    background : rgb(0, 128, 0);
+    padding: auto;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
 
-.status {
-    min-height: 1.25em;
-    margin: 18px 0 0;
-    color: #176b3a;
-}
-
-.status.error {
-    color: #b42318;
-}
-
-.signed-in-panel p {
-    overflow-wrap: anywhere;
-}
-
-[hidden] {
-    display: none !important;
 }

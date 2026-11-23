@@ -1,31 +1,27 @@
 # Firebase Web Form Demo
 
-A small static web page demonstrating Firebase Authentication with email and password. Users can create an account, log in, and sign out. The page lives at the project root; its styles and authentication code are organized under `assets/css/` and `assets/js/`. Credentials are handled by Firebase Authentication and are never written to Realtime Database or another application database.
+A small static web form demo with email and password fields. The page is `index.html`, with its stylesheet in `assets/css/` and form handler in `assets/js/`.
 
-## Set up Firebase
+## What this demo does
 
-1. Create a project in the [Firebase Console](https://console.firebase.google.com/).
-2. In **Build → Authentication → Sign-in method**, enable **Email/Password**.
-3. Register a web app in the project and copy its Firebase web app configuration.
-4. Copy `firebase-config.example.js` to `firebase-config.js` in the project root and fill in `apiKey`, `authDomain`, `projectId`, and `appId`. The local config file is ignored by Git.
-5. In **Authentication → Settings → Authorized domains**, add the hostname where you will run or host the page.
+This project does **not** use Firebase Authentication. The submit handler in `assets/js/form.js` pushes the entered email and password to Firebase Realtime Database under the `form` path. The “Log in” link is only a placeholder; there is no login flow.
 
-Firebase web app configuration is client-side configuration, not a way to authorize access to private data. Do not put admin credentials or service account keys in this page. Restrict the API key to the appropriate web referrers in Google Cloud when applicable.
+## Security warning
+
+Passwords sent to Realtime Database are stored as ordinary data, not as Firebase Authentication credentials. This is unsafe. **Do not enter real passwords or reuse credentials from any other service.** This demo is not suitable for production. Use Firebase Authentication for real account creation and sign-in, and secure any database separately with appropriate rules.
 
 ## Run locally
 
-Serve the project directory over HTTP (ES modules do not work reliably from a `file://` URL). For example, with Python installed:
+The page loads Firebase's JavaScript SDK from a CDN, so an internet connection is required. Serve the project over HTTP rather than opening the HTML file directly. For example, with Python installed:
 
 ```sh
 python -m http.server 8000
 ```
 
-Open `http://localhost:8000` in a browser. Ensure `localhost` is an authorized Firebase domain.
+Open `http://localhost:8000/`. The Firebase web app configuration currently lives in `assets/js/form.js`; update it for a Firebase project with Realtime Database enabled if you want to test the demo. Database access also depends on that project's Realtime Database rules.
 
-## Hosting
+## Project files
 
-Deploy `index.html`, `assets/js/form.js`, and `assets/css/style.css` to any static web host, along with your configured root-level `firebase-config.js`. Keep that file out of source control; configure your deployment process to provide it as a local build/deploy file. Add the deployed hostname to Firebase Authentication's authorized domains. The example config is intentionally blank and cannot connect until configured.
-
-## Scope and limitations
-
-This is a minimal learning/demo project, not a production authentication system. It has no application backend, user profile storage, password reset flow, email verification, or production monitoring. Firebase Authentication manages passwords; this app does not collect or persist them itself. Do not use this sample as the sole security boundary for sensitive data.
+- `index.html` — account form and page entry point.
+- `assets/css/style.css` — page styling.
+- `assets/js/form.js` — Firebase Realtime Database form handler.
